@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>handling my website data </title>
+     <!-- Favicon -->
+     <link rel="icon" type="image/png" href="D:\My Projects Challanges\10th Challange - My Portofolio\18986853.png" />
+  <style>
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #352F44;
+      color: #FAF0E6;
+      padding: 2rem;
+    }
+
+    h1 { color: #B9B4C7; margin-bottom: 2rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    th, td {
+      border: 1px solid rgba(185,180,199,0.3);
+      padding: 0.8rem 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #5C5470;
+      color: #FAF0E6;
+    }
+
+    tr:nth-child(even) { background-color: rgba(92,84,112,0.3); }
+  </style>
+</head>
+<body>
+  <h1>Admin - Contact Messages</h1>
+  <table id="messages-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="5">Loading messages...</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const API_BASE = 'http://localhost:8080'; 
+
+    async function loadMessages() {
+      const tbody = document.querySelector('#messages-table tbody');
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/messages`); 
+        if (!res.ok) throw new Error(res.statusText);
+        const data = await res.json();
+
+        tbody.innerHTML = '';
+        if (data.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5">No messages found</td></tr>';
+          return;
+        }
+
+        data.forEach(msg => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${msg.id}</td>
+            <td>${msg.name}</td>
+            <td>${msg.email}</td>
+            <td>${msg.message}</td>
+            <td>${new Date(msg.date).toLocaleString()}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5">Failed to load messages: ${err.message}</td></tr>`;
+      }
+    }
+
+    window.addEventListener('load', loadMessages);
+  </script>
+</body>
+</html>

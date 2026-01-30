@@ -1,0 +1,10 @@
+the first thing i learn is that once you use script to run in the package.json
+you will need to put the file of package.json inside the backend folder cause if you not make that when running it will give you 
+module not found and that cause the script really can not see the server.js file you mention it in the package.json
+so the really important thing is to put the package.json file in the same place with the server.js
+
+there is sometime the server may delay with you and may tell you that he cannot read any package you already installed it 
+and you already used it so it is just glitch install npm again and close the server and open it again and all things will be okay 
+
+if you destructing specific functions from the module ensure that the module is export all the functions even if it is just one single function
+into object not just assigning
