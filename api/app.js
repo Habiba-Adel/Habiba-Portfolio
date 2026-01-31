@@ -10,8 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "..")));
-
+app.use(express.static(path.join(__dirname, "..", "public")));
 // ===== Rate limit =====
 const contactLimiter = rateLimit({
   windowMs: 60 * 1000,
