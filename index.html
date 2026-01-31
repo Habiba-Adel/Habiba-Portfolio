@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Habiba </title>
-    <!-- Favicon (modern best practice) -->
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <style>
       .modal-content a {
@@ -645,7 +645,6 @@
         return div;
     }
 
-    // Modal (unchanged)
     function openModal(item, type) {
         const modal = document.createElement('div');
         modal.className = 'modal';
@@ -706,7 +705,7 @@
     };
 
     try {
-      const res = await fetch(`${API_BASE}api/contact`, {
+      const res = await fetch(`${API_BASE}/api/contact`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
