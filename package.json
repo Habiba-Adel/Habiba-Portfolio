@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "cd api && npm install && npm start"
+  },
   "dependencies": {
     "express-rate-limit": "^8.2.1",
     "joi": "^18.0.2",

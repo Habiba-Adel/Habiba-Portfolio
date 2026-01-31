@@ -17,10 +17,10 @@ mongoose.connect(MONGODB_URI)
     console.log('MongoDB connected successfully');
     
     // Start server only after successful DB connection
-    // app.listen(PORT, () => {
-    //   console.log(`Server is running on http://localhost:${PORT}`);
-    //   console.log(`API root: http://localhost:${PORT}/`);
-    // });
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+      console.log(`API root: http://localhost:${PORT}/`);
+    });
   })
   .catch((err) => {
     console.error('MongoDB connection failed:', err.message);
