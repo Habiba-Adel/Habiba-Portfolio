@@ -23,9 +23,10 @@ const sendContactMessage = async (req, res) => {
     });
 
     const mailOptions = {
-      from: email,
-      to: process.env.EMAIL_USER,
-      subject: `[Message from contact me in your website]`,
+      from: process.env.EMAIL_USER, 
+      replyTo: email,               
+      to: process.env.EMAIL_USER,   
+      subject: `[Message from contact me on your website]`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     };
 
